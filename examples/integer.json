@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "title": "A small budget, a greedy trap",
+  "synthetic": true,
+  "budget": 21,
+  "strata": [
+    {
+      "name": "Accessible sites",
+      "population": 100,
+      "sd": 11,
+      "cost": 3,
+      "min": 1,
+      "max": 8
+    },
+    {
+      "name": "Remote sites",
+      "population": 100,
+      "sd": 14,
+      "cost": 5,
+      "min": 1,
+      "max": 8
+    }
+  ]
+}

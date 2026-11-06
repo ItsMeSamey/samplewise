@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "title": "CreekWatch: a water-quality pilot",
+  "synthetic": true,
+  "budget": 720,
+  "strata": [
+    {
+      "name": "Urban tributaries",
+      "population": 420,
+      "sd": 18,
+      "cost": 4,
+      "min": 8,
+      "max": 100
+    },
+    {
+      "name": "Agricultural reaches",
+      "population": 310,
+      "sd": 30,
+      "cost": 7,
+      "min": 8,
+      "max": 80
+    },
+    {
+      "name": "Forest headwaters",
+      "population": 180,
+      "sd": 8,
+      "cost": 11,
+      "min": 5,
+      "max": 40
+    },
+    {
+      "name": "Estuary sites",
+      "population": 90,
+      "sd": 25,
+      "cost": 15,
+      "min": 5,
+      "max": 30
+    }
+  ]
+}

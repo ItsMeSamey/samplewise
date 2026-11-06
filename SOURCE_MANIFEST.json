@@ -1,0 +1,29 @@
+{
+  "project": "Samplewise",
+  "version": "1.0.0",
+  "files": {
+    "LICENSE": "fddc096ccd2ae564d643a6ad2e1838c46b39132caa604fed9f827445a69659ec",
+    "README.md": "adfab8964305b768e48960644ea11ed8061088caa1a412f7ba8f8b4165748c47",
+    "benchmarks/results.json": "46b89ea246fe2ca29625f6e7cc4d1a123a3c62c1d3fe1369b60c64b1b5e92e54",
+    "docs/BENCHMARK.md": "15a6606aa5b0096b5a27243a2cd21b8a3609ffd35e4ff257959a1e0b9444dbf3",
+    "docs/METHOD.md": "70aa09413447383766fc1d15b6801dc10b2962488f20cb24faa9ca2b8c521d3c",
+    "docs/PROVENANCE.md": "6b61846a50c26092b47b22346984c977e133e6ae3ac36734ea87db20b8751e05",
+    "examples/campus.json": "f3cf5ecb3d6042d0d339ebdb523a7eb1a1302263afda2eb4261ab8d7b88adbcf",
+    "examples/integer.json": "02b6f0e42a06140e11566ad74aa8fdf939740d3231fccfb45c5d13be6baf9508",
+    "examples/water.json": "1c594c4574d99673072f009130393ed30b982cb57c8a9c33eec350999b5773b2",
+    "index.html": "f43868ec14a48acc6ecfbaac84f712f3a377e1183029ab94b649a70c09cdaae4",
+    "package.json": "4aa7b8927a1ea09d2c15dce3bf6b8475dec9e9c785cba233e3b752e7fa136d52",
+    "scripts/benchmark.mjs": "56a6afda5b387b4b8b95305bf43cf70fafc70731c92bce8ebaaaf001eb7a65ab",
+    "scripts/serve.mjs": "86243bca74ec2688ca1cef7b268f95eaa5f0daa5fd132276ce56f5f4133e9aa1",
+    "src/app.mjs": "8a6a6bbc9ea929cb97d6e0520076943c7f5163bb540d6a5a698a4b42049dfbc2",
+    "src/io.mjs": "d562c9449215291d1384b0af75634b6d0c94b0fecf1a5507fc62c8770bcfed26",
+    "src/optimizer.mjs": "bd7355d78272a547b71bd80df5ace627c1a66f27685ecd2338498414b5c0d06d",
+    "src/scenarios.mjs": "960f841d2d30d144686cd240952c5ea53d0d1367db7da72710c39909bf72736f",
+    "src/worker.mjs": "e4870acecb71fe092409174d65a039945c458167bb6a8481066d6157d0ac31f5",
+    "styles.css": "87bc140fa4061106fa543309e396712d4ae687d9babc335f66b7586664fe2b70",
+    "tests/critic-oracle.test.mjs": "6e794684160e4f9a86b086ed1d8e176e39ef6f23ef24ad7a143860b270ef661b",
+    "tests/optimizer.test.mjs": "801f5aeb1ddcca670217ee0d30eb2e9ddfd30286ea66aece9f6a3bc997afad2e"
+  },
+  "release_revision": "2026-11-06-comparator-display-docs2",
+  "source_archive_sha256": "a57e2e2bb69d1fd4a3297eddaad8871f325dca6fc118a7a0f1928d87acbdea3f"
+}

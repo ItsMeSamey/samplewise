@@ -1,0 +1,40 @@
+{
+  "schemaVersion": 1,
+  "title": "CampusPulse: a student travel survey",
+  "synthetic": true,
+  "budget": 500,
+  "strata": [
+    {
+      "name": "On-campus residents",
+      "population": 2800,
+      "sd": 12,
+      "cost": 2,
+      "min": 15,
+      "max": 100
+    },
+    {
+      "name": "Local commuters",
+      "population": 7200,
+      "sd": 24,
+      "cost": 3,
+      "min": 15,
+      "max": 130
+    },
+    {
+      "name": "Regional commuters",
+      "population": 1200,
+      "sd": 42,
+      "cost": 6,
+      "min": 10,
+      "max": 60
+    },
+    {
+      "name": "Online students",
+      "population": 1800,
+      "sd": 18,
+      "cost": 2,
+      "min": 10,
+      "max": 100
+    }
+  ]
+}
