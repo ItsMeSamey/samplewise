@@ -18,10 +18,18 @@ function numericValue(input) { return input.value.trim() === '' ? NaN : Number(i
 function setError(message) { $('error').textContent = message; $('error').hidden = !message; }
 function setExportState(disabled) { $('export-report').disabled = disabled; $('export-csv').disabled = disabled; $('sensitivity-stratum').disabled = disabled; }
 function stopWorker() { if (worker) { worker.terminate(); worker = null; } $('run').disabled = false; $('run').textContent = 'Find the best allocation →'; }
+function failCalculation(message, status = 'Calculation unavailable.') {
+  setError(message); stopWorker();
+  $('status').textContent = status;
+  $('dirty-note').textContent = lastResult ? 'The previous results have not been updated.' : 'No calculation has completed.';
+  $('stale-banner').hidden = !lastResult;
+  if (lastResult) $('stale-banner').textContent = 'Calculation failed. These results belong to the previous completed run.';
+}
 function markDirty() {
   importRevision++;
   revision++; dirty = true; stopWorker(); setExportState(true);
   $('stale-banner').hidden = !lastResult;
+  $('stale-banner').textContent = 'Inputs changed. These results belong to the last completed run. Run again before exporting.';
   $('dirty-note').textContent = 'Inputs changed. Run again to update the plan.';
   $('status').textContent = ''; setError(''); updateInputSummary();
 }
@@ -66,18 +74,21 @@ function run(selectedIndex = Number($('sensitivity-stratum').value) || 0) {
   $('run').disabled = true; $('run').textContent = 'Solving the integer allocation…';
   $('status').textContent = 'Checking every feasible integer choice, plus two sensitivity scenarios…';
   setExportState(true);
+  $('dirty-note').textContent = lastResult ? 'Calculating. The displayed results are from the previous run.' : 'Calculating a new plan.';
+  $('stale-banner').hidden = !lastResult;
+  if (lastResult) $('stale-banner').textContent = 'Calculation in progress. These results belong to the previous completed run.';
   try { worker = new Worker(new URL('./worker.mjs', import.meta.url), { type: 'module' }); }
-  catch { setError('The calculation worker could not start. Run npm start and open the localhost address; file:// pages are not supported.'); stopWorker(); return; }
+  catch { failCalculation('The calculation worker could not start. Try Run again. For local use, run npm start and open the localhost address.'); return; }
   worker.onmessage = ({ data }) => {
     if (data.id !== revision) return;
+    if (data.error) { failCalculation(data.error, 'No new allocation was produced.'); return; }
     stopWorker();
-    if (data.error) { setError(data.error); $('status').textContent = 'No new allocation was produced.'; return; }
     lastResult = data.result; dirty = false;
     render(lastResult); setExportState(false);
     $('dirty-note').textContent = 'The results below match these inputs.';
     $('status').textContent = `Allocation ready. ${whole(lastResult.exact.samples)} samples, ${whole(lastResult.exact.cost)} credits, estimated SE ${number(lastResult.exact.se)}.`;
   };
-  worker.onerror = event => { if (id !== revision) return; event.preventDefault(); stopWorker(); setError('The calculation worker failed. Serve this folder with npm start, then reload.'); $('status').textContent = 'Calculation unavailable.'; };
+  worker.onerror = event => { if (id !== revision) return; event.preventDefault(); failCalculation('The calculation worker failed. Try Run again. If it keeps failing, check that the local server is running.'); };
   worker.postMessage({ id, input, sensitivityIndex: Math.min(selectedIndex, input.strata.length - 1) });
 }
 function render(result) {

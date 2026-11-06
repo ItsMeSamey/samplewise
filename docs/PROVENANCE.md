@@ -6,6 +6,8 @@ On 6 November 2026, a separate release copy was prepared from the retained Octob
 
 The v0.1.1 maintenance revision, prepared later on 6 November, adds an import-order guard and resets the file selector before reading. New controller tests reproduce stale file completions and verify that the latest planner action wins. The original v0.1.0 app is included as a test fixture. The optimizer, Worker, report format, examples and benchmark data retain their v0.1.0 bytes. OpenAI coding agents implemented and independently reviewed this revision.
 
+The v0.1.2 maintenance revision adds a terminal status for Worker startup failure and identifies retained results during pending or failed reruns. It includes the exact v0.1.1 app as a failing regression fixture, eleven focused Worker-controller tests and a summarized independent audit of actual browser failure/retry behavior. OpenAI coding agents implemented the correction and separately reviewed the code and evidence. The optimizer, Worker module, report format, benchmark data and prior test files remain unchanged. The original releases and negative test receipts are preserved.
+
 ## AI assistance
 
 OpenAI coding agents assisted with concept development, mathematical implementation, UI, tests, benchmark generation and documentation. A separately tasked AI critic authored an independent exhaustive-oracle test suite and reviewed the implementation. This is AI-assisted work; agent review is not a human or professional statistical audit. No claim is made that a human entrant personally authored all code or independently verified every result.

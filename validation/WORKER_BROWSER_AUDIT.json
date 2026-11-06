@@ -1,0 +1,36 @@
+{
+  "result": "PASS",
+  "scope": "Independent read-only audit of recorded actual owned-preview Worker fetch failure and keyboard recovery; no replay or reviewer runtime.",
+  "owner_result_sha256": "0e2c356c89bc6825cf338542d61cac2cea3c90101e00643da68aa177bdebb59d",
+  "app_sha256": "3419ef9addd9c89a805bf2628c1e9c004578322906f35b917bc09f89859f622d",
+  "fixture_sha256": "4c3dbed2ad0cbbb767e2526ac5a7597552ecb41113471dcbedbd843bdcfbbde3",
+  "http_receipt_sha256": "d1682ef892df3d57b91e0fd396a93063c3ee051273c839a9a09bf1dfb59af94b",
+  "worker_http_statuses": [
+    200,
+    503,
+    200
+  ],
+  "checks": [
+    "All owner-pinned evidence hashes and all26 candidate manifest payloads verified",
+    "Fixture code limits failure to second GET of exact Worker route and sends no-store",
+    "Actual app200 response binds3419 candidate despite readiness metadata omission",
+    "One completed503 only, followed by actual200 Worker retry",
+    "Failure retains prior113sample720credit result, labels it previous, enables Run and disables report/CSV",
+    "Fresh snapshot verifies Run focus; one completed ordinary Enter dispatch recovers",
+    "Recovered result clears failure labels and restores exports",
+    "Recovered22.5/37.5 sensitivity cards correspond to Agricultural reaches planningSD30; retained selection inferred from output and recorded one-selection flow",
+    "After-stop receipt inactive/PID0 and final bridge active-empty/unblocked",
+    "Publishedv0.1.1 archive unchanged"
+  ],
+  "preserved_negative": "Initial ref Enter completed with Control is outside viewport; not counted as successful input. Eight subsequent tab receipts and fresh focus precede successful Enter.",
+  "metadata_caveats": [
+    "Readiness helper indexes manifest.files[app.mjs] instead of src/app.mjs, so app_sha256 is omitted. Startup checks every manifest member and actual app response hash provide independent binding.",
+    "Snapshot and select response do not expose selected value. Retention is inferred from changed sensitivity cards plus recorded flow, not directly observed as a control value.",
+    "Service ownership_verified false is the post-stop status of an unloaded unit; cleanup is supported by stop_result and inactive/PID0 receipts."
+  ],
+  "limitations": [
+    "Constructor/reported calculation errors remain controller-fixture evidence only",
+    "No actual file import, pixels or responsive test",
+    "No publication performed or independently rechecked in this audit"
+  ]
+}

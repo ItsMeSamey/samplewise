@@ -1,0 +1,56 @@
+{
+  "release": "v0.1.2",
+  "date": "2026-11-06",
+  "base_public_commit": "3c76d58518575c186fc1740bfc112df33bffcbdf",
+  "node_version": "v26.12.1",
+  "scope": "Production controller execution with controlled Worker events and DOM/result fixtures. Actual browser evidence is summarized separately; retained raw browser receipts are not bundled.",
+  "source_bindings": {
+    "src/app.mjs": "3419ef9addd9c89a805bf2628c1e9c004578322906f35b917bc09f89859f622d",
+    "tests/worker-lifecycle.test.mjs": "81b126b842c9450acafbfcb9e6df7bed32c2cead7058ad59c637c06fba716cb0",
+    "tests/import-controller.test.mjs": "b71cd9f44b40386e98156a03b1e40eedada7b8e2c06efc401c5ae17dd30275a8",
+    "validation/baseline-app-v0.1.1.txt": "2e4edd0c2d42ea9e113d8eaafc5a33e20d2f3d116c49c5ce21dfc67ceeca6002",
+    "validation/baseline-app-v0.1.0.txt": "8a6a6bbc9ea929cb97d6e0520076943c7f5163bb540d6a5a698a4b42049dfbc2",
+    "src/optimizer.mjs": "bd7355d78272a547b71bd80df5ace627c1a66f27685ecd2338498414b5c0d06d",
+    "src/worker.mjs": "e4870acecb71fe092409174d65a039945c458167bb6a8481066d6157d0ac31f5",
+    "benchmarks/results.json": "46b89ea246fe2ca29625f6e7cc4d1a123a3c62c1d3fe1369b60c64b1b5e92e54"
+  },
+  "worker_baseline": {
+    "command": "SAMPLEWISE_APP=validation/baseline-app-v0.1.1.txt node --test tests/worker-lifecycle.test.mjs",
+    "passed": 6,
+    "failed": 5,
+    "exit_code": 1,
+    "expected_failure": true,
+    "retained_stdout_sha256": "8782b4b917b78163a4fda6ac0baf8acb69f1a81b65d9b2237c40f8b93ae1182c"
+  },
+  "worker_fixed": {
+    "command": "node --test tests/worker-lifecycle.test.mjs",
+    "passed": 11,
+    "failed": 0,
+    "exit_code": 0
+  },
+  "import_current": {
+    "command": "node --test tests/import-controller.test.mjs",
+    "passed": 17,
+    "failed": 0,
+    "exit_code": 0
+  },
+  "import_baseline": {
+    "command": "SAMPLEWISE_APP=validation/baseline-app-v0.1.0.txt node --test tests/import-controller.test.mjs",
+    "passed": 5,
+    "failed": 12,
+    "exit_code": 1,
+    "expected_failure": true
+  },
+  "historical_import_record": {
+    "path": "validation/IMPORT_RESULTS.json",
+    "release": "v0.1.1",
+    "fixed_app_now_preserved_as": "validation/baseline-app-v0.1.1.txt",
+    "sha256": "4d468993750bab04e33b62ebf2b10444c5bbb8451b3ec2c3984311b3dd142a6c"
+  },
+  "actual_browser_audit": {
+    "path": "validation/WORKER_BROWSER_AUDIT.json",
+    "sha256": "0abc904f1ff3fcdef394dfe52a4f399e436dd7986a462fcd9509387a3ae5a1cf",
+    "format": "Unchanged independently authored summary of retained private receipts, not a portable browser automation script or raw public evidence bundle."
+  },
+  "independent_controller_review_sha256": "38f9a8e8d5a3a21c0b26e9676b2a88e676dfa6c0e38fc7e5348d415c0f7e4eba"
+}
