@@ -1,0 +1,54 @@
+{
+  "release": "v0.1.1",
+  "date": "2026-11-06",
+  "baseline_public_commit": "56d2b4b5180969549a193fc91d15cfee1455fb00",
+  "node_version": "v26.12.1",
+  "source_bindings": {
+    "baseline_fixture": {
+      "path": "validation/baseline-app-v0.1.0.txt",
+      "sha256": "8a6a6bbc9ea929cb97d6e0520076943c7f5163bb540d6a5a698a4b42049dfbc2"
+    },
+    "fixed_app": {
+      "path": "src/app.mjs",
+      "sha256": "2e4edd0c2d42ea9e113d8eaafc5a33e20d2f3d116c49c5ce21dfc67ceeca6002"
+    },
+    "controller_tests": {
+      "path": "tests/import-controller.test.mjs",
+      "sha256": "b71cd9f44b40386e98156a03b1e40eedada7b8e2c06efc401c5ae17dd30275a8"
+    },
+    "unchanged_optimizer": {
+      "path": "src/optimizer.mjs",
+      "sha256": "bd7355d78272a547b71bd80df5ace627c1a66f27685ecd2338498414b5c0d06d"
+    },
+    "unchanged_benchmark": {
+      "path": "benchmarks/results.json",
+      "sha256": "46b89ea246fe2ca29625f6e7cc4d1a123a3c62c1d3fe1369b60c64b1b5e92e54"
+    }
+  },
+  "baseline": {
+    "command": "SAMPLEWISE_APP=validation/baseline-app-v0.1.0.txt node --test tests/import-controller.test.mjs",
+    "passed": 5,
+    "failed": 12,
+    "exit_code": 1,
+    "retained_stdout_sha256": "9062bd8daa23d0b91f2cd7a9f626aea4d3b3c06005278b8bccb987c0337b3961"
+  },
+  "fixed": {
+    "command": "node --test tests/import-controller.test.mjs",
+    "passed": 17,
+    "failed": 0,
+    "exit_code": 0,
+    "retained_stdout_sha256": "583c9fce58cac2528d3d9f89d6178632b4ea0c6508be17c8fabbe97022710af1"
+  },
+  "scope": "Production import listener and intent functions executed with controlled deferred file reads and DOM/Worker fixtures. Actual native browser file selection was not performed.",
+  "changed_app_browser_check": {
+    "scope": "Background startup, example selection, budget edit, keyboard Run and Worker result. No file import or pixels.",
+    "receipt_sha256": "4fe9e2a38344a03ba843c7b904e0c914b272c2fd02679e72f2d734363ffcdf34",
+    "allocation_after_budget_24": [
+      3,
+      3
+    ],
+    "samples": 6,
+    "cost": 24,
+    "displayed_standard_error": "5.062"
+  }
+}

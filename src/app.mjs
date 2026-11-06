@@ -7,7 +7,7 @@ const number = value => value === 0 ? '0' : Math.abs(value) < 0.001 ? value.toEx
 const whole = value => new Intl.NumberFormat('en', { maximumFractionDigits: 0 }).format(value);
 const percent = value => value === null ? 'N/A' : value > 0 && value < 0.0001 ? '<0.0001%' : `${new Intl.NumberFormat('en', { maximumFractionDigits: 4 }).format(Math.max(0, value))}%`;
 const element = (tag, text, className) => { const node = document.createElement(tag); if (text !== undefined) node.textContent = text; if (className) node.className = className; return node; };
-let lastResult = null, worker = null, revision = 0, dirty = true;
+let lastResult = null, worker = null, revision = 0, importRevision = 0, dirty = true;
 const fields = ['name', 'population', 'sd', 'cost', 'min', 'max'];
 const fieldLabels = ['name', 'population', 'planning standard deviation', 'cost per sample', 'minimum sample', 'maximum sample'];
 
@@ -19,6 +19,7 @@ function setError(message) { $('error').textContent = message; $('error').hidden
 function setExportState(disabled) { $('export-report').disabled = disabled; $('export-csv').disabled = disabled; $('sensitivity-stratum').disabled = disabled; }
 function stopWorker() { if (worker) { worker.terminate(); worker = null; } $('run').disabled = false; $('run').textContent = 'Find the best allocation →'; }
 function markDirty() {
+  importRevision++;
   revision++; dirty = true; stopWorker(); setExportState(true);
   $('stale-banner').hidden = !lastResult;
   $('dirty-note').textContent = 'Inputs changed. Run again to update the plan.';
@@ -58,6 +59,7 @@ function loadScenario(scenario, runNow = true) {
   if (runNow) run(0);
 }
 function run(selectedIndex = Number($('sensitivity-stratum').value) || 0) {
+  importRevision++;
   setError(''); const input = readInput();
   try { validate(input); } catch (error) { setError(error.message); $('status').textContent = 'Check the inputs above; the previous plan has not been updated.'; return; }
   stopWorker(); const id = ++revision;
@@ -175,11 +177,14 @@ $('export-csv').addEventListener('click', () => { if (lastResult && !dirty) down
 $('import-button').addEventListener('click', () => $('import-file').click());
 $('import-file').addEventListener('change', async event => {
   const file = event.target.files[0]; if (!file) return;
+  event.target.value = '';
+  const id = ++importRevision;
   try {
     if (file.size > 100000) throw new Error('Use a scenario JSON file smaller than 100 KB.');
-    const scenario = parseScenario(await file.text());
+    const text = await file.text();
+    if (id !== importRevision) return;
+    const scenario = parseScenario(text);
     $('example').selectedIndex = -1; loadScenario(scenario);
-  } catch (error) { setError(error.message); }
-  finally { event.target.value = ''; }
+  } catch (error) { if (id === importRevision) setError(error.message); }
 });
 setExportState(true); loadScenario(structuredClone(scenarios.water));
